@@ -29,7 +29,9 @@ User Question:
 decision = subprocess.run(
     ["ollama", "run", "llama3.2", decision_prompt],
     capture_output=True,
-    text=True
+    text=True,
+    encoding="utf-8",
+    errors="replace",
 )
 
 tool_name = decision.stdout.strip().lower()
@@ -68,7 +70,9 @@ Do not mention the tool name.
 final_response = subprocess.run(
     ["ollama", "run", "llama3.2", final_prompt],
     capture_output=True,
-    text=True
+    text=True,
+    encoding="utf-8",
+    errors="replace",
 )
 
 print("\nTravel Agent:\n")
